@@ -2,6 +2,7 @@
 var inquirer = require('inquirer');
 var mysql = require('mysql');
 
+//0. Create connection
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -9,7 +10,8 @@ var connection = mysql.createConnection({
     database: 'Bamazon'
 });
 
-//1. Display products itens
+//1. Display products items
+// Working on store interface
 
 function selectProducts() {
     connection.query('SELECT * FROM Products', function(error, results, fields) {
@@ -20,9 +22,9 @@ function selectProducts() {
     });
 };
 
-//2 . Promp tUser
-//selectProducts();
+selectProducts();
 
+//2. Prompt User
 function storeUserInterface() {
     inquirer.prompt([{
             type: 'input',
@@ -45,40 +47,39 @@ function storeUserInterface() {
                 if (value) {
                     return true;
                 }
-                return 'Please enter unit number';
+                return 'Please enter Unit number';
             },
             filter: Number
         }
     ]).then(function(answers) {
-        console.log(JSON.stringify(answers, null, '  '));
         var units = answers.units;
         var id = answers.id;
         checkInventory(id, units);
     });
 };
-//create functions to check units
-function checkInventory(id, units) {
-    console.log('Id: ' + id);
-    console.log('Units: ' + units);
 
+//3. Functions to check units
+function checkInventory(id, units) {
     connection.query('SELECT * FROM Products WHERE item_id =?', [id], function(error, results, fields) {
         if (error) throw error
         results.forEach(function(element) {
             var stock = results[0].stock_quantity;
             if (stock < units) {
-                console.log('Insufficient quantity!');
+                console.log('Insufficient quantity! We only have ' + stock + ' left in stock. You will be redirect to the main menu.');
+                storeUserInterface();
             } else {
-                console.log('Inventory: ', element);
-                console.log('Inventory ok')
+                var totalStock = stock - units;
+                checkout(id, totalStock);
             }
         });
     });
 }
 
-
-
-
-//create funciton to check out
-
-
+//4. Function for checkout products
+function checkout(id, totalStock) {
+    connection.query('UPDATE Products SET stock_quantity = ? WHERE item_id = ?', [totalStock, id], function(error, results, fields) {
+        if (error) throw error
+        console.log('Thank you once again for your business!');
+    });
+}
 storeUserInterface();
