@@ -1,6 +1,9 @@
 'use strict';
 var inquirer = require('inquirer');
 var mysql = require('mysql');
+var table = require('console.table');
+var figlet = require('figlet');
+var colors = require('colors');
 
 //0. Create connection
 var connection = mysql.createConnection({
@@ -10,6 +13,21 @@ var connection = mysql.createConnection({
     database: 'Bamazon'
 });
 
+
+//Create interface
+function displayProducts() {
+    figlet('BamaZon CLI Store', 'Standard', function(err, data) {
+        if (err) {
+            console.log('Something went wrong...');
+            console.dir(err);
+            return;
+        }
+        console.log(data.magenta);
+
+    });
+}
+displayProducts();
+
 //1. Display products items
 // Working on store interface
 
@@ -17,11 +35,12 @@ function selectProducts() {
     connection.query('SELECT * FROM Products', function(error, results, fields) {
         if (error) throw error;
         results.forEach(function(inventory) {
-            console.log('Products: ', inventory);
+            //console.log('Products: ', inventory);
         });
+        console.table(results);
+        storeUserInterface();
     });
 };
-
 selectProducts();
 
 //2. Prompt User
@@ -29,8 +48,7 @@ function storeUserInterface() {
     inquirer.prompt([{
             type: 'input',
             name: 'id',
-            message: 'What is the ID for the product?',
-            //Validate if number is not empty, validate if it is not float number
+            message: 'What is the ID for the product that you would like to purchase?',
             validate: function(value) {
                 if (value) {
                     return true;
@@ -47,7 +65,7 @@ function storeUserInterface() {
                 if (value) {
                     return true;
                 }
-                return 'Please enter Unit number';
+                return 'How many units?';
             },
             filter: Number
         }
@@ -65,7 +83,7 @@ function checkInventory(id, units) {
         results.forEach(function(element) {
             var stock = results[0].stock_quantity;
             if (stock < units) {
-                console.log('Insufficient quantity! We only have ' + stock + ' left in stock. You will be redirect to the main menu.');
+                console.log('Insufficient quantity! We only have '.red + stock + ' left in stock. You will be redirect to the main menu.'.red);
                 storeUserInterface();
             } else {
                 var totalStock = stock - units;
@@ -79,7 +97,9 @@ function checkInventory(id, units) {
 function checkout(id, totalStock) {
     connection.query('UPDATE Products SET stock_quantity = ? WHERE item_id = ?', [totalStock, id], function(error, results, fields) {
         if (error) throw error
-        console.log('Thank you once again for your business!');
+        console.log('Your order has been placed! Thank you once again for your business!'.magenta);
+        selectProducts();
+
     });
 }
-storeUserInterface();
+//storeUserInterface();
