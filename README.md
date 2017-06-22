@@ -5,7 +5,7 @@ This app simulates a store front application using CLI.
 To run the interface for customers type node bamazonCustomer.js
 The application will first display all of the items available for sale. Include the ids, names, prices, and the total inventory.
 
-##Screenshot
+**Screenshot**
 
 ![Image of Customer screen]
 
