@@ -7,7 +7,7 @@ The application will first display all of the items available for sale. Include 
 
 **Screenshot**
 
-![Image of Customer screen]
+![Image of customer screen]
 
 (https://arienellefsen.github.io/Bamazon/images/screenCustomer.png)
 
@@ -40,11 +40,25 @@ The application will first display a set of menu options:
 * Add to Inventory
 * Add New Product
 
+**Screenshot**
+
+![Image of manager screen]
+
+(https://arienellefsen.github.io/Bamazon/images/screenManager1.png)
+
 **Option - View Products for Sale**
 The app list every available item: the item IDs, names, prices, and quantities.
 
+![Image of a list of every available item]
+
+(https://arienellefsen.github.io/Bamazon/images/screenManager2.png)
+
 **Option - View Low Inventory**
 The app list all items with a inventory count lower than five
+
+![Image of low Inventory]
+
+(https://arienellefsen.github.io/Bamazon/images/screenManager3.png)
 
 **Option - Add to Inventory**
 The app display a prompt that will let the manager "add more" of any item currently in the store.
