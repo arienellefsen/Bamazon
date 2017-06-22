@@ -55,7 +55,6 @@
          }
      ];
      inquirer.prompt(questions).then(function(answers) {
-         console.log(JSON.stringify(answers, null, '  '));
          var id = answers.productId;
          var inventory = answers.inventory;
          checkinventory(id, inventory);
@@ -85,7 +84,6 @@
          }
      ];
      inquirer.prompt(questions).then(function(answers) {
-         console.log(JSON.stringify(answers, null, ' '));
          var id = answers.productId;
          var product = answers.productName;
          var department = answers.departmentName;
@@ -120,7 +118,6 @@
      connection.query('SELECT * FROM Products WHERE item_id = ? ', [id], function(error, results, fields) {
          if (error) throw error;
          var stock = results[0].stock_quantity;
-         console.log('Total of quantity:' + stock);
          var total = Number(stock) + Number(inventory);
          addInventory(id, total);
      });
