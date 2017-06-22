@@ -30,9 +30,6 @@ displayProducts();
 function selectProducts() {
     connection.query('SELECT * FROM Products', function(error, results, fields) {
         if (error) throw error;
-        results.forEach(function(inventory) {
-            //console.log('Products: ', inventory);
-        });
         console.table(results);
         storeUserInterface();
     });

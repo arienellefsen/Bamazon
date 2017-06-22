@@ -17,7 +17,7 @@
      inquirer.prompt([{
          type: 'list',
          name: 'adminChoices',
-         message: 'What whould you like to manage?',
+         message: 'Please select an option?',
          choices: ['View Products for Sale', 'View Low Inventory', 'Add to Inventory', 'Add New Product'],
          filter: function(val) {
              return val.toLowerCase();
@@ -27,19 +27,15 @@
          console.log('Choices: ' + answers.adminChoices);
          switch (answers.adminChoices) {
              case 'view products for sale':
-                 console.log('Choice 1');
                  selectProducts();
                  break;
              case 'view low inventory':
-                 console.log('Choice 2');
                  lowInventory();
                  break;
              case 'add to inventory':
-                 console.log('Choice 3');
                  promptAddProduct();
                  break;
              case 'add new product':
-                 console.log('Choice 4');
                  promptAddNewProduct();
                  break;
          }
@@ -62,19 +58,12 @@
          console.log(JSON.stringify(answers, null, '  '));
          var id = answers.productId;
          var inventory = answers.inventory;
-         // addInventory(id, inventory);
          checkinventory(id, inventory);
      });
  };
 
  function promptAddNewProduct() {
-     console.log('test ariene');
      var questions = [{
-             type: 'input',
-             name: 'productId',
-             message: 'Product ID'
-         },
-         {
              type: 'input',
              name: 'productName',
              message: 'Name of the product'
@@ -106,12 +95,12 @@
      });
  };
 
+ //Display Manager Interfaces
  managerUserInterface();
 
  function selectProducts() {
      connection.query('SELECT * FROM Products', function(error, results, fields) {
          if (error) throw error;
-         results.forEach(function() {});
          console.table(results);
          managerUserInterface();
 
@@ -121,7 +110,6 @@
  function lowInventory() {
      connection.query('SELECT * FROM Products WHERE stock_quantity < 5', function(error, results, fields) {
          if (error) throw error;
-         results.forEach(function() {});
          console.table(results);
          managerUserInterface();
 
@@ -131,9 +119,6 @@
  function checkinventory(id, inventory) {
      connection.query('SELECT * FROM Products WHERE item_id = ? ', [id], function(error, results, fields) {
          if (error) throw error;
-         results.forEach(function(data) {
-
-         });
          var stock = results[0].stock_quantity;
          console.log('Total of quantity:' + stock);
          var total = Number(stock) + Number(inventory);
