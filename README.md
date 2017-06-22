@@ -44,21 +44,21 @@ The application will first display a set of menu options:
 
 ![Image of manager screen]
 
-(https://arienellefsen.github.io/Bamazon/images/screenManager1.png)
+(https://arienellefsen.github.io/Bamazon/images/Managerscreen1.png)
 
 **Option - View Products for Sale**
 The app list every available item: the item IDs, names, prices, and quantities.
 
 ![Image of a list of every available item]
 
-(https://arienellefsen.github.io/Bamazon/images/screenManager2.png)
+(https://arienellefsen.github.io/Bamazon/images/Managerscreen2.png)
 
 **Option - View Low Inventory**
 The app list all items with a inventory count lower than five
 
 ![Image of low Inventory]
 
-(https://arienellefsen.github.io/Bamazon/images/screenManager3.png)
+(https://arienellefsen.github.io/Bamazon/images/Managerscreen3.png)
 
 **Option - Add to Inventory**
 The app display a prompt that will let the manager "add more" of any item currently in the store.
