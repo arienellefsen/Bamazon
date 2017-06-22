@@ -16,13 +16,18 @@ After choose how many units would you like to buy.
 If the store has sufficient products for your purchased will be displayed with the following screen confirming your order.
 
 **Screenshot**
+
 ![Image of placed order]
+
 (https://arienellefsen.github.io/Bamazon/images/screenCustomer2.png)
 
 
 If there is no sufficient inventory you will be prompt with alert message saying that we don't have sufficient inventory for your order and then you will be redirect to the store menu.
+
 **Screenshot**
+
 ![Image of insufficient inventory]
+
 (https://arienellefsen.github.io/Bamazon/images/screenCustomer3.png)
 
 
