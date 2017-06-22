@@ -14,9 +14,17 @@ The application will first display all of the items available for sale. Include 
 Then select the product ID that you would like to purchase.
 After choose how many units would you like to buy.
 If the store has sufficient products for your purchased will be displayed with the following screen confirming your order.
-If there is no sufficient inventory you will be prompt with alert message saying that we don't have sufficient inventory for your order and then you will be redirect to the store menu.
 
 **Screenshot**
+![Image of placed order]
+(https://arienellefsen.github.io/Bamazon/images/screenCustomer2.png)
+
+
+If there is no sufficient inventory you will be prompt with alert message saying that we don't have sufficient inventory for your order and then you will be redirect to the store menu.
+**Screenshot**
+![Image of insufficient inventory]
+(https://arienellefsen.github.io/Bamazon/images/screenCustomer3.png)
+
 
 ## Manager View
 To run the interface for manager type node bamazonManager.js
