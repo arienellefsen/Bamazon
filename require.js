@@ -1,3 +1,0 @@
-exports.header = function() {
-
-};
