@@ -13,7 +13,6 @@ var connection = mysql.createConnection({
     database: 'Bamazon'
 });
 
-
 //Create interface
 function displayProducts() {
     figlet('BamaZon CLI Store', 'Standard', function(err, data) {
@@ -23,14 +22,11 @@ function displayProducts() {
             return;
         }
         console.log(data.magenta);
-
     });
 }
 displayProducts();
 
 //1. Display products items
-// Working on store interface
-
 function selectProducts() {
     connection.query('SELECT * FROM Products', function(error, results, fields) {
         if (error) throw error;
@@ -99,7 +95,5 @@ function checkout(id, totalStock) {
         if (error) throw error
         console.log('Your order has been placed! Thank you once again for your business!'.magenta);
         selectProducts();
-
     });
 }
-//storeUserInterface();
