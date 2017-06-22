@@ -1,11 +1,11 @@
 # Bamazon
 This app simulates a store front application using CLI.
 
-# Customer Interface
+## Customer Interface
 To run the interface for customers type node bamazonCustomer.js
 The application will first display all of the items available for sale. Include the ids, names, prices, and the total inventory.
-
 **Screenshot**
+(https://github.com/arienellefsen/Bamazon/blob/master/Screenshots/screenCustomer.png)
 
 Then select the product ID that you would like to purchase.
 After choose how many units would you like to buy.
@@ -14,7 +14,7 @@ If there is no sufficient inventory you will be prompt with alert message saying
 
 **Screenshot**
 
-# Manager View
+## Manager View
 To run the interface for manager type node bamazonManager.js
 The application will first display a set of menu options:
 
